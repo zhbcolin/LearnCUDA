@@ -1,0 +1,1 @@
+-nologo -E -TP -D__CUDACC__ -D__NVCC__  "-ID:/NVIDIA GPU Computing Toolkit/CUDA/v10.0/bin/../include"    -D__CUDACC_VER_MAJOR__=10 -D__CUDACC_VER_MINOR__=0 -D__CUDACC_VER_BUILD__=130 -FI "cuda_runtime.h" -EHsc "CMakeCUDACompilerId.cu" 
