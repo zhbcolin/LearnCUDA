@@ -1,5 +1,0 @@
-typedef char __nv_bool;
-#line 180 "D:\\Visual Studio 2017\\VC\\Tools\\MSVC\\14.16.27023\\include\\vcruntime.h"
-typedef unsigned long long size_t;
-#include "crt/device_runtime.h"
-#include "common_functions.h"
