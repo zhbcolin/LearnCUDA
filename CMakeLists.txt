@@ -1,16 +1,36 @@
 cmake_minimum_required(VERSION 3.25)
 project(learnCUDA CUDA)
 
+include_directories(.)
 set(CMAKE_CUDA_STANDARD 17)
 set(CMAKE_CUDA_ARCHITECTURES 70)
+set(OpenCV_DIR D:\\OpenCV\\build\\x64\\vc16\\lib)
+find_package(OpenCV REQUIRED)
+include_directories(D:\\OpenCV\\build\\x64)
 
 add_executable(example1 example/example1.cu)
 add_executable(example2 example/example2.cu)
 add_executable(example3 example/example3.cu)
+add_executable(example4 example/example4.cu)
+add_executable(example5 example/example5.cu)
+add_executable(example6 example/example6.cu)
+add_executable(example7 example/example7.cu)
 
 set_target_properties(example1 PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(example2 PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(example3 PROPERTIES
+        CUDA_SEPARABLE_COMPILATION ON)
+
+set_target_properties(example4 PROPERTIES
+        CUDA_SEPARABLE_COMPILATION ON)
+target_link_libraries(example4 ${OpenCV_LIBS})
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+
+set_target_properties(example5 PROPERTIES
+        CUDA_SEPARABLE_COMPILATION ON)
+set_target_properties(example6 PROPERTIES
+        CUDA_SEPARABLE_COMPILATION ON)
+set_target_properties(example7 PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)
