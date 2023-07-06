@@ -82,7 +82,7 @@ int main() {
     cudaEvent_t start, stop_gpu, stop_cpu;
     cudaEventCreate(&start);
     cudaEventCreate(&stop_cpu);
-    cudaEventCreate(&stop_cpu);
+    cudaEventCreate(&stop_gpu);
 
     cudaEventRecord(start);
     cudaEventSynchronize(start);

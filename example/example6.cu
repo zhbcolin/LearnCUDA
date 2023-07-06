@@ -143,6 +143,7 @@ int main()
     dim3 dimBlock(BLOCK_SIZE, BLOCK_SIZE);
 
     gpu_matrix<<<dimGrid, dimBlock>>>(a, b, c_gpu, M, N, K);
+    cudaDeviceSynchronize();
 
     cpu_matrix(a, b, c_cpu, M, N, K);
 
