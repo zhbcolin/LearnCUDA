@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../../../../Program Files (x86)/Windows Kits/10/Include/10.0.17763.0/ucrt/stdio.h"
+#include "../../../../../Program Files (x86)/Windows Kits/10/Include/10.0.17763.0/ucrt/stdio.h"
 
 #define CHECK(call)                                                        \
 do {                                                                       \

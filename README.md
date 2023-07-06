@@ -1,1 +1,1 @@
-# LearnHPC
+# LearnCUDA

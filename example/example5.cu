@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#include "../include/error.cuh"
+#include "LearnCUDA/include/error.cuh"
 
 #define BLOCK_SIZE 32
 // a[][] * b[][] = c[][]
