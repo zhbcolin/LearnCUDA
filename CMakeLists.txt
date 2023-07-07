@@ -16,6 +16,7 @@ add_executable(example5 example/example5.cu)
 add_executable(example6 example/example6.cu)
 add_executable(example7 example/example7.cu)
 add_executable(example8 example/example8.cu)
+add_executable(example9 example/example9.cu)
 
 set_target_properties(example1 PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)
@@ -36,4 +37,6 @@ set_target_properties(example6 PROPERTIES
 set_target_properties(example7 PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(example8 PROPERTIES
+        CUDA_SEPARABLE_COMPILATION ON)
+set_target_properties(example9 PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)
