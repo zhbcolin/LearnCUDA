@@ -40,3 +40,6 @@ set_target_properties(example8 PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(example9 PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)
+
+add_executable(1_add_cpu book/1_add_cpu.cu)
+add_executable(1_add_gpu book/1_add_gpu.cu)
