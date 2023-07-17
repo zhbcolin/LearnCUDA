@@ -44,3 +44,6 @@ set_target_properties(example9 PROPERTIES
 add_executable(1_add_cpu book/1_add_cpu.cu)
 add_executable(1_add_gpu book/1_add_gpu.cu)
 add_executable(2_global_mem book/2_global_mem.cu)
+add_executable(3_shared_mem_cpu book/3_shared_mem_cpu.cu)
+add_executable(3_shared_mem_gpu book/3_shared_mem_gpu.cu)
+add_executable(3_shared_mem_bank book/3_shared_mem_bank.cu)
