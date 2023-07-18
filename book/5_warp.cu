@@ -21,6 +21,10 @@ __global__ void test_warp_primitives(void) {
     printf("%2d ", tid);
     if(tid == 0) printf("\n");
 
+    if(tid == 0) printf("lane_ud:     ");
+    printf("%2d ", lane_id);
+    if(tid == 0) printf("\n");
+
     unsigned mask1 = __ballot_sync(FULL_MASK, tid > 0);
     unsigned mask2 = __ballot_sync(FULL_MASK, tid == 0);
     if(tid == 0) printf("FULL_MASK = %x\n", FULL_MASK);
