@@ -15,7 +15,7 @@ static real sum(int N, real *x) {
 
 static void scale_velocity(int N, real T_0, Atom *atom) {
     real temperature = sum(N, atom->ke) / (1.5 * K_B * N);
-    real scale_factor = sqrt(T_0) / temperature;
+    real scale_factor = sqrt(T_0 / temperature);
     for(int n = 0; n < N; ++n) {
         atom->vx[n] *= scale_factor;
         atom->vy[n] *= scale_factor;
@@ -35,15 +35,15 @@ static void integrate(int N, real time_step, Atom *atom, int flag) {
     real *fy = atom->fy;
     real *fz = atom->fz;
     real *ke = atom->ke;
-    real time_sep_half = time_step * 0.5;
+    real time_step_half = time_step * 0.5;
     for(int n = 0; n < N; ++n) {
         real mass_inv = 1.0 / m[n];
         real ax = fx[n] * mass_inv;
         real ay = fy[n] * mass_inv;
         real az = fz[n] * mass_inv;
-        vx[n] += ax * time_sep_half;
-        vy[n] += ax * time_sep_half;
-        vz[n] += ax * time_sep_half;
+        vx[n] += ax * time_step_half;
+        vy[n] += ax * time_step_half;
+        vz[n] += ax * time_step_half;
         if(flag == 1) {
             x[n] += vx[n] * time_step;
             y[n] += vy[n] * time_step;

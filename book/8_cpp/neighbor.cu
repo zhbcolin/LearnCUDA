@@ -18,7 +18,7 @@ void find_neighbor(int N, int MN, Atom *atom) {
     }
 
     for(int n1 = 0; n1 < N - 1; ++n1) {
-        for(int n2 = 0; n2 < N; ++n2) {
+        for(int n2 = n1+1; n2 < N; ++n2) {
             real x12 = x[n2] - x[n1];
             real y12 = y[n2] - y[n1];
             real z12 = z[n2] - z[n1];
