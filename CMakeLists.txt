@@ -62,3 +62,5 @@ add_executable(7_unified_memory_oversubscription1 book/7_unified_memory_oversubs
 add_executable(7_unified_memory_oversubscription2 book/7_unified_memory_oversubscription2.cu)
 add_executable(7_unified_memory_oversubscription3 book/7_unified_memory_oversubscription3.cu)
 add_executable(7_unified_memory_prefetch book/7_unified_memory_prefetch.cu)
+
+add_subdirectory(book/8_cpp)
