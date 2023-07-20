@@ -5,4 +5,4 @@ include_directories(.)
 set(CMAKE_CUDA_STANDARD 17)
 set(CMAKE_CUDA_ARCHITECTURES 70)
 
-add_executable(main initialize.cu)
+add_executable(8_cpp main.cu force.cu initialize.cu integrate.cu memory.cu)
