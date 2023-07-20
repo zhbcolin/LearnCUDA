@@ -5,4 +5,4 @@ include_directories(.)
 set(CMAKE_CUDA_STANDARD 17)
 set(CMAKE_CUDA_ARCHITECTURES 70)
 
-#add_executable(8_force_only)
+add_executable(8_force_only main.cu force.cu)
