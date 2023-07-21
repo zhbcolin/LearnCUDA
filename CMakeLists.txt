@@ -66,3 +66,7 @@ add_executable(7_unified_memory_prefetch book/7_unified_memory_prefetch.cu)
 add_subdirectory(book/8_cpp)
 add_subdirectory(book/8_force_only)
 add_subdirectory(book/8_whole_code)
+
+link_directories(dll)
+add_executable(9_cublas_gemma book/9_cublas_gemma.cu)
+target_link_libraries(9_cublas_gemma cublas)
