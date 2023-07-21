@@ -77,3 +77,5 @@ add_executable(9_cusolver book/9_cusolver.cu)
 target_link_libraries(9_cusolver cusolver)
 add_executable(9_thrust_scan_pointer book/9_thrust_scan_pointer.cu)
 add_executable(9_thrust_scan_vector book/9_thrust_scan_vector.cu)
+
+add_executable(10_max book/10_max.cu)
