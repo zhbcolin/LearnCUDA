@@ -65,3 +65,4 @@ add_executable(7_unified_memory_prefetch book/7_unified_memory_prefetch.cu)
 
 add_subdirectory(book/8_cpp)
 add_subdirectory(book/8_force_only)
+add_subdirectory(book/8_whole_code)
