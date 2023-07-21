@@ -49,3 +49,46 @@ static void __global__ gpu_find_force(LJ lj, int N, int *g_NN, int *g_NL, Box bo
         g_pe[i] = potential * 0.5;
     }
 }
+
+void find_force(int N, int MN, Atom *atom) {
+    const real epsilon = 1.032e-2;
+    const real sigma = 3.405;
+    const real cutoff = 10.0;
+    const real cutoff2 = cutoff * cutoff;
+    const real sigma_3 = sigma * sigma * sigma;
+    const real sigma_6 = sigma_3 * sigma_3;
+    const real sigma_12 = sigma_6 * sigma_6;
+    const real e24s6 = 24.0 * epsilon * sigma_6;
+    const real e48s12 = 48.0 * epsilon * sigma_12;
+    const real e4s6 = 4.0 * epsilon * sigma_6;
+    const real e4s12 = 4.0 * epsilon * sigma_12;
+    LJ lj;
+    lj.cutoff2 = cutoff2;
+    lj.e24s6 = e24s6;
+    lj.e48s12 = e48s12;
+    lj.e4s6 = e4s6;
+    lj.e4s12 = e4s12;
+
+    Box box;
+    box.lx = atom->box[0];
+    box.ly = atom->box[1];
+    box.lz = atom->box[2];
+    box.lx2 = atom->box[3];
+    box.ly2 = atom->box[4];
+    box.lz2 = atom->box[5];
+
+    int m = sizeof(real) * N;
+    CHECK(cudaMemcpy(atom->g_x, atom->x, m, cudaMemcpyHostToDevice));
+    CHECK(cudaMemcpy(atom->g_y, atom->y, m, cudaMemcpyHostToDevice));
+    CHECK(cudaMemcpy(atom->g_z, atom->z, m, cudaMemcpyHostToDevice));
+
+    int block_size = 128;
+    int grid_size = (N + block_size - 1) / block_size;
+    gpu_find_force<<<grid_size, block_size>>>(lj, N, atom->g_NN, atom->g_NL, box, atom->g_x, atom->g_y, atom->g_z,
+                                              atom->g_fx, atom->g_fy, atom->g_fz, atom->g_pe);
+
+    CHECK(cudaMemcpy(atom->fx, atom->g_fx, m, cudaMemcpyDeviceToHost));
+    CHECK(cudaMemcpy(atom->fy, atom->g_fy, m, cudaMemcpyDeviceToHost));
+    CHECK(cudaMemcpy(atom->fz, atom->g_fz, m, cudaMemcpyDeviceToHost));
+    CHECK(cudaMemcpy(atom->pe, atom->g_pe, m, cudaMemcpyDeviceToHost));
+}
